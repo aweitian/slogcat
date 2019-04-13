@@ -27,7 +27,7 @@ int main(int argc, char**argv)
     int o;
     int l = ANDROID_LOG_DEBUG;
     strcpy(tag,"Garri");
-    const char *optstring = "deiwvt::"; //abc: 有三个选项-abc，其中c选项后有冒号，所以后面必须有参数
+    const char *optstring = "hdeiwvt::"; //abc: 有三个选项-abc，其中c选项后有冒号，所以后面必须有参数
     while ((o = getopt(argc, argv, optstring)) != -1) {
         switch (o) {
             case 'd':
@@ -48,6 +48,9 @@ int main(int argc, char**argv)
             case 't':
                 strcpy(tag,optarg);
                 break;
+            case 'h':
+                usage();
+                return 0;
         }
     }
     LOG(l,tag,"%s",argv[optind]);
